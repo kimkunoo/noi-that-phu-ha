@@ -3,142 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nội Thất Phú Hà - Chuyên đồ gỗ tự nhiên, giường, tủ, kệ tivi, bàn ghế ăn cao cấp tại 970 Đê La Thành, Hà Nội.">
     <title>Nội Thất Phú Hà | Đồ Gỗ Tự Nhiên Cao Cấp</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- Header Navigation -->
-    <header id="header">
-        <div class="nav-container">
-            <a href="#" class="logo">Phú Hà</a>
-            <ul class="nav-links">
-                <li><a href="#home">Trang chủ</a></li>
-                <li><a href="#about">Về chúng tôi</a></li>
-                <li><a href="#collections">Sản phẩm</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">PHÚ HÀ</a>
+            <nav class="nav">
+                <a href="#about" class="nav-link">Về chúng tôi</a>
+                <a href="#collections" class="nav-link">Bộ sưu tập</a>
+                <a href="#contact" class="btn btn-outline">Liên hệ</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>Tinh Hoa Gỗ Tự Nhiên</h1>
-            <p>Kiến tạo không gian sống hiện đại, đẳng cấp và ấm cúng với những thiết kế đồ gỗ tinh xảo được chế tác riêng cho ngôi nhà của bạn.</p>
-            <a href="#collections" class="btn">Khám phá ngay</a>
+    <!-- Hero: Split screen / Asymmetric -->
+    <section class="hero pb-24">
+        <div class="hero-text-col">
+            <h1 class="display-title">Kiến tạo<br><span class="italic-emphasis">không gian sống</span><br>đích thực.</h1>
+            <p class="hero-subtext">Đồ gỗ tự nhiên tinh xảo, được chế tác riêng cho tổ ấm hiện đại của bạn.</p>
+            <div class="hero-actions">
+                <a href="#collections" class="btn btn-primary">Khám phá bộ sưu tập</a>
+            </div>
+        </div>
+        <div class="hero-img-col">
+            <img src="images/hero_banner_1780022452830.png" alt="Không gian sống tinh tế" class="hero-img">
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="about">
-            <div class="about-image">
-                <img src="images/living_room_collection_1780022575585.png" alt="Không gian nội thất phòng khách hiện đại">
+    <!-- Full width quote -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <h2 class="quote-text">"Vẻ đẹp mộc mạc của gỗ tự nhiên là thứ không một vật liệu nhân tạo nào có thể thay thế."</h2>
+        </div>
+    </section>
+
+    <!-- About Section: offset grid -->
+    <section id="about" class="about-section pt-24 pb-24">
+        <div class="about-grid">
+            <div class="about-img-wrap">
+                <img src="images/living_room_collection_1780022575585.png" alt="Phòng khách hiện đại" class="about-img">
             </div>
-            <div class="about-text">
-                <h2>Về Nội Thất Phú Hà</h2>
-                <p>Tọa lạc tại khu phố nội thất sầm uất <strong>970 Đê La Thành, Hà Nội</strong>, Nội Thất Phú Hà tự hào là điểm đến tin cậy cho những tín đồ yêu thích vẻ đẹp mộc mạc nhưng đầy sang trọng của đồ gỗ tự nhiên.</p>
-                <p>Chúng tôi chuyên cung cấp và thiết kế theo yêu cầu các sản phẩm nội thất cao cấp: giường ngủ, tủ quần áo, kệ tivi, bàn ghế ăn... Sự kết hợp giữa phong cách hiện đại và nét đẹp truyền thống Việt Nam tạo nên những không gian sống hoàn mỹ nhất.</p>
-                <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Liên hệ tư vấn</a>
+            <div class="about-content">
+                <h2 class="section-title">Chế tác từ<br>sự tận tâm.</h2>
+                <p class="body-text">Tọa lạc tại 970 Đê La Thành, Hà Nội. Chúng tôi mang đến những thiết kế nội thất tối giản, tập trung vào công năng và phô diễn trọn vẹn đường vân tự nhiên của gỗ.</p>
+                <a href="#contact" class="link-arrow">Tìm hiểu thêm <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
         </div>
     </section>
 
-    <!-- Collections Section -->
-    <section id="collections" class="collections">
-        <div class="collections-container">
-            <h2 class="section-title">Bộ Sưu Tập Nổi Bật</h2>
-            <p class="section-subtitle">Từng chi tiết được trau chuốt tỉ mỉ, mang hơi thở tự nhiên vào không gian sống hiện đại của bạn.</p>
+    <!-- Collections: Bento Grid -->
+    <section id="collections" class="collections-section pt-24 pb-24 dark-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-light">Bộ Sưu Tập</h2>
+                <p class="body-text text-light-dim">Từng góc nhỏ trong ngôi nhà đều xứng đáng được trau chuốt.</p>
+            </div>
             
-            <div class="grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-img">
-                        <img src="images/living_room_collection_1780022575585.png" alt="Phòng Khách">
-                    </div>
-                    <div class="card-content">
-                        <h3>Không Gian Phòng Khách</h3>
-                        <p>Sofa gỗ tự nhiên, kệ tivi hiện đại kết hợp ánh sáng ấm áp, tạo nên trung tâm sang trọng cho ngôi nhà.</p>
+            <div class="bento-grid">
+                <div class="bento-card bento-large">
+                    <img src="images/living_room_collection_1780022575585.png" alt="Phòng khách" class="bento-img">
+                    <div class="bento-overlay">
+                        <h3>Không gian phòng khách</h3>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-img">
-                        <img src="images/bedroom_collection_1780022546795.png" alt="Phòng Ngủ">
-                    </div>
-                    <div class="card-content">
-                        <h3>Nội Thất Phòng Ngủ</h3>
-                        <p>Giường ngủ gỗ tự nhiên êm ái, thiết kế tối giản mang lại giấc ngủ trọn vẹn và thư thái.</p>
+                <div class="bento-card bento-tall">
+                    <img src="images/bedroom_collection_1780022546795.png" alt="Phòng ngủ" class="bento-img">
+                    <div class="bento-overlay">
+                        <h3>Nội thất phòng ngủ</h3>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-img">
-                        <img src="images/dining_collection_1780022707495.png" alt="Phòng Ăn">
-                    </div>
-                    <div class="card-content">
-                        <h3>Bàn Ghế Phòng Ăn</h3>
-                        <p>Bộ bàn ăn 6 ghế thanh lịch, kết nối yêu thương trong những bữa ăn gia đình ấm cúng.</p>
+                <div class="bento-card bento-small">
+                    <img src="images/dining_collection_1780022707495.png" alt="Phòng ăn" class="bento-img">
+                    <div class="bento-overlay">
+                        <h3>Bàn ghế ăn</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">Ghé Thăm Chúng Tôi</h2>
-        <p class="section-subtitle">Đội ngũ chuyên gia của Phú Hà luôn sẵn sàng lắng nghe và hiện thực hóa ý tưởng không gian sống của bạn.</p>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt info-icon"></i>
-                    <div class="info-text">
-                        <h4>Địa chỉ Showroom</h4>
-                        <p>970 Đường Đê La Thành, Phường Giảng Võ, Quận Ba Đình, Hà Nội 10000</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone-alt info-icon"></i>
-                    <div class="info-text">
-                        <h4>Điện thoại liên hệ</h4>
-                        <p>(024) 3557 5878<br>0981 213 161</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock info-icon"></i>
-                    <div class="info-text">
-                        <h4>Giờ mở cửa</h4>
-                        <p>Thứ 2 - Chủ Nhật<br>08:00 AM - 19:00 PM</p>
-                    </div>
+    <!-- Contact -->
+    <section id="contact" class="contact-section pt-24 pb-24">
+        <div class="contact-grid">
+            <div class="contact-text">
+                <h2 class="section-title">Bắt đầu<br>dự án của bạn.</h2>
+                <div class="contact-details">
+                    <p class="body-text"><strong>Showroom:</strong> 970 Đê La Thành, Giảng Võ, Ba Đình, Hà Nội</p>
+                    <p class="body-text"><strong>Hotline:</strong> 0981 213 161</p>
                 </div>
             </div>
-
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm nhất!');">
-                <input type="text" placeholder="Họ và tên của bạn" required>
-                <input type="tel" placeholder="Số điện thoại" required>
-                <textarea placeholder="Bạn cần tư vấn về sản phẩm nào? (Giường, tủ, bàn ghế ăn...)" required></textarea>
-                <button type="submit" class="btn btn-primary">Gửi Yêu Cầu Tư Vấn</button>
-            </form>
+            <div class="contact-form-wrap">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn, chúng tôi sẽ liên hệ lại sớm nhất!');">
+                    <div class="input-group">
+                        <label>Tên của bạn</label>
+                        <input type="text" placeholder="Nguyễn Văn A">
+                    </div>
+                    <div class="input-group">
+                        <label>Số điện thoại</label>
+                        <input type="tel" placeholder="09xx xxx xxx">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Gửi yêu cầu tư vấn</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Nội Thất Phú Hà. Thiết kế với sự tinh tế.</p>
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">PHÚ HÀ</div>
+            <div class="footer-links">
+                <a href="#">Điều khoản</a>
+                <a href="#">Chính sách bảo mật</a>
+            </div>
+            <p class="copyright">&copy; 2026 Nội Thất Phú Hà.</p>
+        </div>
     </footer>
 
-    <!-- JS -->
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

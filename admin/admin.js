@@ -3,41 +3,15 @@
    Tích hợp Firebase Auth & Firestore
    ============================================= */
 
-// IMPORT FIREBASE (Sử dụng version 9/10 modular qua CDN)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { 
-  getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged 
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { 
-  getFirestore, collection, getDocs, doc, setDoc, deleteDoc, getDoc 
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+// IMPORT SUPABASE
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-/* 
-  =============================================
-  CẤU HÌNH FIREBASE CỦA BẠN 
-  (Thay thế bằng config thực tế từ Firebase Console)
-  ============================================= 
-*/
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
+const SUPABASE_URL = "https://rrxbiygabevjfsmajiho.supabase.co";
+const SUPABASE_KEY = "sb_publishable_mAqJ9fNj2U_k5U6XLa-OnA_7whmdDdQ";
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Khởi tạo Firebase (Sẽ báo lỗi nếu chưa thay config chuẩn)
-let app, auth, db;
-const isConfigured = firebaseConfig.apiKey !== "YOUR_API_KEY";
+const isConfigured = true;
 
-if (isConfigured) {
-  app = initializeApp(firebaseConfig);
-  auth = getAuth(app);
-  db = getFirestore(app);
-} else {
-  console.warn("Chưa cấu hình Firebase! Đang sử dụng LocalStorage để Demo...");
-}
 
 // ── DOM Elements ──
 const loginContainer = document.getElementById('login-container');
@@ -59,51 +33,27 @@ const modalTitle = document.getElementById('modal-title');
 const settingsForm = document.getElementById('settings-form');
 
 // ── XỬ LÝ AUTH ──
-if (isConfigured) {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // Đã đăng nhập
-      loginContainer.style.display = 'none';
-      dashboardContainer.style.display = 'flex';
-      loadProducts();
-      loadSettings();
-    } else {
-      // Chưa đăng nhập
-      loginContainer.style.display = 'flex';
-      dashboardContainer.style.display = 'none';
-    }
-  });
-
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('admin-email').value;
-    const pass = document.getElementById('admin-password').value;
-    
-    try {
-      await signInWithEmailAndPassword(auth, email, pass);
-      loginError.textContent = '';
-    } catch (error) {
-      loginError.textContent = 'Sai email hoặc mật khẩu!';
-    }
-  });
-
-  btnLogout.addEventListener('click', () => {
-    signOut(auth);
-  });
-} else {
-  // MOCK AUTH CHO DEMO
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('admin-email').value;
+  const pass = document.getElementById('admin-password').value;
+  
+  // Hardcoded Demo Auth
+  if (email === 'admin@phuha.com' && pass === '123456') {
+    loginError.textContent = '';
     loginContainer.style.display = 'none';
     dashboardContainer.style.display = 'flex';
     loadProducts();
     loadSettings();
-  });
-  btnLogout.addEventListener('click', () => {
-    loginContainer.style.display = 'flex';
-    dashboardContainer.style.display = 'none';
-  });
-}
+  } else {
+    loginError.textContent = 'Sai thông tin! (Hãy dùng: admin@phuha.com / 123456)';
+  }
+});
+
+btnLogout.addEventListener('click', () => {
+  loginContainer.style.display = 'flex';
+  dashboardContainer.style.display = 'none';
+});
 
 // ── CHUYỂN TAB (NAVIGATION) ──
 navItems.forEach(item => {
@@ -142,14 +92,11 @@ function renderTable(products) {
 // Load dữ liệu
 async function loadProducts() {
   if (isConfigured) {
-    const querySnapshot = await getDocs(collection(db, "products"));
-    const products = [];
-    querySnapshot.forEach((doc) => {
-      products.push({ id: doc.id, ...doc.data() });
-    });
-    renderTable(products);
-    // Lưu tạm ra window để hàm sửa có thể truy cập
-    window.currentProducts = products;
+    const { data, error } = await supabase.from('products').select('*');
+    if (!error && data) {
+      renderTable(data);
+      window.currentProducts = data;
+    }
   } else {
     // Mock Data
     const mockData = JSON.parse(localStorage.getItem('phuha_products')) || [];
@@ -177,6 +124,7 @@ productForm.addEventListener('submit', async (e) => {
   
   const prodId = document.getElementById('prod-id').value || `prod_${Date.now()}`;
   const data = {
+    id: prodId,
     name: document.getElementById('prod-name').value,
     tag: document.getElementById('prod-category').options[document.getElementById('prod-category').selectedIndex].text,
     category: document.getElementById('prod-category').value,
@@ -187,15 +135,15 @@ productForm.addEventListener('submit', async (e) => {
   };
 
   if (isConfigured) {
-    await setDoc(doc(db, "products", prodId), data);
+    await supabase.from('products').upsert(data);
   } else {
     // Mock Save
     let products = JSON.parse(localStorage.getItem('phuha_products')) || [];
     const index = products.findIndex(p => p.id === prodId);
     if (index > -1) {
-      products[index] = { id: prodId, ...data };
+      products[index] = data;
     } else {
-      products.push({ id: prodId, ...data });
+      products.push(data);
     }
     localStorage.setItem('phuha_products', JSON.stringify(products));
   }
@@ -209,7 +157,7 @@ window.deleteProduct = async function(id) {
   if (!confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) return;
   
   if (isConfigured) {
-    await deleteDoc(doc(db, "products", id));
+    await supabase.from('products').delete().eq('id', id);
   } else {
     let products = JSON.parse(localStorage.getItem('phuha_products')) || [];
     products = products.filter(p => p.id !== id);
@@ -237,17 +185,9 @@ window.editProduct = function(id) {
 
 // ── CÀI ĐẶT CHUNG ──
 async function loadSettings() {
-  if (isConfigured) {
-    const docSnap = await getDoc(doc(db, "settings", "general"));
-    if (docSnap.exists()) {
-      document.getElementById('site-hotline').value = docSnap.data().hotline || '';
-      document.getElementById('site-address').value = docSnap.data().address || '';
-    }
-  } else {
-    const s = JSON.parse(localStorage.getItem('phuha_settings')) || {};
-    document.getElementById('site-hotline').value = s.hotline || '';
-    document.getElementById('site-address').value = s.address || '';
-  }
+  const s = JSON.parse(localStorage.getItem('phuha_settings')) || {};
+  document.getElementById('site-hotline').value = s.hotline || '';
+  document.getElementById('site-address').value = s.address || '';
 }
 
 settingsForm.addEventListener('submit', async (e) => {
@@ -256,12 +196,6 @@ settingsForm.addEventListener('submit', async (e) => {
     hotline: document.getElementById('site-hotline').value,
     address: document.getElementById('site-address').value
   };
-
-  if (isConfigured) {
-    await setDoc(doc(db, "settings", "general"), data);
-    alert("Đã lưu cài đặt!");
-  } else {
-    localStorage.setItem('phuha_settings', JSON.stringify(data));
-    alert("Đã lưu cài đặt (Demo LocalStorage)!");
-  }
+  localStorage.setItem('phuha_settings', JSON.stringify(data));
+  alert("Đã lưu cài đặt tạm!");
 });

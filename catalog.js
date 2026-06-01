@@ -5,18 +5,13 @@
 // Start loading
 window.addEventListener('DOMContentLoaded', loadProducts);
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-/* Thay config Firebase của bạn vào đây khi đã sẵn sàng */
-const firebaseConfig = { apiKey: "YOUR_API_KEY" };
-const isConfigured = firebaseConfig.apiKey !== "YOUR_API_KEY";
+const SUPABASE_URL = "https://rrxbiygabevjfsmajiho.supabase.co";
+const SUPABASE_KEY = "sb_publishable_mAqJ9fNj2U_k5U6XLa-OnA_7whmdDdQ";
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const isConfigured = true;
 
-let db;
-if (isConfigured) {
-  const app = initializeApp(firebaseConfig);
-  db = getFirestore(app);
-}
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,9 +32,13 @@ const defaultProducts = [
 
 async function loadProducts() {
   if (isConfigured) {
-    const snap = await getDocs(collection(db, "products"));
-    products = [];
-    snap.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+    const { data, error } = await supabase.from('products').select('*');
+    if (error) {
+      console.error(error);
+      products = defaultProducts;
+    } else {
+      products = data && data.length > 0 ? data : defaultProducts;
+    }
   } else {
     products = JSON.parse(localStorage.getItem('phuha_products'));
     if (!products || products.length === 0) {

@@ -203,6 +203,13 @@ h1, h2, h3, .logo, .display-title, .section-title {
   padding-right: 3rem;
 }
 
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .hero-img-col {
   height: calc(100dvh - 3rem);
   margin-top: 3rem;

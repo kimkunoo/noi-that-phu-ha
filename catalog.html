@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Sản Phẩm | Nội Thất Phú Hà</title>
+    <meta name="description" content="Khám phá toàn bộ bộ sưu tập nội thất gỗ tự nhiên cao cấp của Phú Hà — phòng khách, phòng ngủ, phòng ăn và nhiều hơn nữa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header header--light" id="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo logo--dark">PHÚ HÀ</a>
+            <nav class="nav nav--dark">
+                <a href="index.html#about" class="nav-link nav-link--dark">Về chúng tôi</a>
+                <a href="catalog.html" class="nav-link nav-link--dark nav-link--active">Sản phẩm</a>
+                <a href="index.html#contact" class="btn btn-outline btn-outline--dark">Liên hệ</a>
+            </nav>
+            <!-- Mobile hamburger -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Mở menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">Trang chủ</a>
+            <a href="index.html#about" class="mobile-nav-link">Về chúng tôi</a>
+            <a href="catalog.html" class="mobile-nav-link">Sản phẩm</a>
+            <a href="index.html#contact" class="mobile-nav-link">Liên hệ</a>
+        </nav>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="catalog-hero">
+        <div class="catalog-hero-inner container">
+            <p class="catalog-eyebrow">Bộ sưu tập 2026</p>
+            <h1 class="catalog-title">Tất cả sản phẩm</h1>
+            <p class="catalog-subtitle">Từng món đồ được chế tác từ gỗ tự nhiên được chọn lọc kỹ càng.</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filter-bar">
+        <div class="container filter-container">
+            <div class="filter-tabs" role="tablist" aria-label="Bộ lọc danh mục">
+                <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">Tất cả</button>
+                <button class="filter-tab" data-filter="phong-khach" role="tab" aria-selected="false">Phòng khách</button>
+                <button class="filter-tab" data-filter="phong-ngu" role="tab" aria-selected="false">Phòng ngủ</button>
+                <button class="filter-tab" data-filter="phong-an" role="tab" aria-selected="false">Phòng ăn</button>
+                <button class="filter-tab" data-filter="luu-tru" role="tab" aria-selected="false">Lưu trữ</button>
+            </div>
+            <div class="filter-sort">
+                <label for="sort-select" class="sr-only">Sắp xếp theo</label>
+                <select id="sort-select" class="sort-select">
+                    <option value="default">Mặc định</option>
+                    <option value="price-asc">Giá: Thấp → Cao</option>
+                    <option value="price-desc">Giá: Cao → Thấp</option>
+                    <option value="name-asc">Tên A → Z</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <main class="catalog-main container" id="catalog-main">
+        <div class="product-count" id="product-count">Đang hiển thị <strong>9</strong> sản phẩm</div>
+
+        <div class="product-grid" id="product-grid">
+
+            <!-- Card 1 -->
+            <article class="product-card" data-category="phong-khach" data-price="18500000" data-name="Sofa Bắc Âu">
+                <div class="product-img-wrap">
+                    <img src="images/product_sofa_set.png" alt="Bộ sofa gỗ teak Bắc Âu" class="product-img" loading="lazy">
+                    <div class="product-badge">Bán chạy</div>
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-1" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-1" aria-label="Xem nhanh" onclick="openQuickView(0)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng khách</span>
+                        <span class="product-material">Gỗ Teak</span>
+                    </div>
+                    <h2 class="product-name">Sofa Bắc Âu</h2>
+                    <p class="product-desc">Khung gỗ teak tự nhiên, đệm vải lanh cao cấp, thiết kế tối giản Scandinavian.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">18.500.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="product-card" data-category="phong-khach" data-price="6200000" data-name="Bàn Trà Nhật">
+                <div class="product-img-wrap">
+                    <img src="images/product_coffee_table.png" alt="Bàn trà gỗ sồi phong cách Nhật" class="product-img" loading="lazy">
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-2" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-2" aria-label="Xem nhanh" onclick="openQuickView(1)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng khách</span>
+                        <span class="product-material">Gỗ Sồi</span>
+                    </div>
+                    <h2 class="product-name">Bàn Trà Nhật</h2>
+                    <p class="product-desc">Mặt bàn gỗ sồi nguyên khối, chân thấp phong cách Nhật Bản, tôn lên vẻ đẹp vân gỗ tự nhiên.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">6.200.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="product-card" data-category="phong-khach" data-price="9800000" data-name="Kệ TV Tối Giản">
+                <div class="product-img-wrap">
+                    <img src="images/living_room_collection_1780022575585.png" alt="Kệ TV gỗ tự nhiên tối giản" class="product-img" loading="lazy">
+                    <div class="product-badge product-badge--new">Mới</div>
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-3" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-3" aria-label="Xem nhanh" onclick="openQuickView(2)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng khách</span>
+                        <span class="product-material">Gỗ Óc Chó</span>
+                    </div>
+                    <h2 class="product-name">Kệ TV Tối Giản</h2>
+                    <p class="product-desc">Kệ TV thấp phong cách wabi-sabi, gỗ óc chó Bắc Mỹ, có ngăn kéo ẩn và dây điện thông minh.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">9.800.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="product-card" data-category="phong-ngu" data-price="22000000" data-name="Giường Ngủ Forest">
+                <div class="product-img-wrap">
+                    <img src="images/product_bed_frame.png" alt="Giường ngủ gỗ óc chó Forest" class="product-img" loading="lazy">
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-4" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-4" aria-label="Xem nhanh" onclick="openQuickView(3)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng ngủ</span>
+                        <span class="product-material">Gỗ Óc Chó</span>
+                    </div>
+                    <h2 class="product-name">Giường Ngủ Forest</h2>
+                    <p class="product-desc">Khung giường gỗ óc chó nguyên khối, đầu giường cao tạo điểm nhấn, kích thước 1m6 hoặc 1m8.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">22.000.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="product-card" data-category="phong-ngu" data-price="5500000" data-name="Táp Đầu Giường">
+                <div class="product-img-wrap">
+                    <img src="images/bedroom_collection_1780022546795.png" alt="Táp đầu giường gỗ sồi" class="product-img" loading="lazy">
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-5" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-5" aria-label="Xem nhanh" onclick="openQuickView(4)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng ngủ</span>
+                        <span class="product-material">Gỗ Sồi</span>
+                    </div>
+                    <h2 class="product-name">Táp Đầu Giường</h2>
+                    <p class="product-desc">Táp đầu giường gỗ sồi 2 ngăn kéo, tay cầm đồng, bề mặt sơn dầu tự nhiên bảo vệ vân gỗ.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">5.500.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="product-card" data-category="phong-ngu" data-price="32000000" data-name="Tủ Quần Áo Sliding">
+                <div class="product-img-wrap">
+                    <img src="images/product_wardrobe.png" alt="Tủ quần áo cửa trượt gỗ teak" class="product-img" loading="lazy">
+                    <div class="product-badge product-badge--new">Mới</div>
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-6" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-6" aria-label="Xem nhanh" onclick="openQuickView(5)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng ngủ</span>
+                        <span class="product-material">Gỗ Teak</span>
+                    </div>
+                    <h2 class="product-name">Tủ Quần Áo Sliding</h2>
+                    <p class="product-desc">Tủ quần áo 3 buồng, cửa trượt kính mờ, khung gỗ teak nguyên khối, ray cửa Hettich Đức.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">32.000.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="product-card" data-category="phong-an" data-price="28500000" data-name="Bộ Bàn Ăn 6 Ghế">
+                <div class="product-img-wrap">
+                    <img src="images/product_dining_set.png" alt="Bộ bàn ăn gỗ sồi 6 ghế" class="product-img" loading="lazy">
+                    <div class="product-badge">Bán chạy</div>
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-7" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-7" aria-label="Xem nhanh" onclick="openQuickView(6)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng ăn</span>
+                        <span class="product-material">Gỗ Sồi</span>
+                    </div>
+                    <h2 class="product-name">Bộ Bàn Ăn 6 Ghế</h2>
+                    <p class="product-desc">Bàn ăn mặt liền khối 2m x 0.9m, 6 ghế có đệm vải lanh, chân thép đen kết hợp gỗ sồi tinh tế.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">28.500.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="product-card" data-category="phong-an" data-price="12800000" data-name="Bàn Ăn Live Edge">
+                <div class="product-img-wrap">
+                    <img src="images/dining_collection_1780022707495.png" alt="Bàn ăn Live Edge gỗ me tây" class="product-img" loading="lazy">
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-8" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-8" aria-label="Xem nhanh" onclick="openQuickView(7)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Phòng ăn</span>
+                        <span class="product-material">Gỗ Me Tây</span>
+                    </div>
+                    <h2 class="product-name">Bàn Ăn Live Edge</h2>
+                    <p class="product-desc">Bàn ăn cạnh tự nhiên (live edge) độc bản, gỗ me tây nguyên khối, chân chữ X thép đen thô.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">12.800.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 9 -->
+            <article class="product-card" data-category="luu-tru" data-price="14200000" data-name="Kệ Sách Mở">
+                <div class="product-img-wrap">
+                    <img src="images/hero_banner_1780022452830.png" alt="Kệ sách gỗ tự nhiên" class="product-img" loading="lazy">
+                    <div class="product-actions">
+                        <button class="action-btn" id="wishlist-9" aria-label="Yêu thích">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                        <button class="action-btn" id="quickview-9" aria-label="Xem nhanh" onclick="openQuickView(8)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-meta">
+                        <span class="product-tag">Lưu trữ</span>
+                        <span class="product-material">Gỗ Sồi</span>
+                    </div>
+                    <h2 class="product-name">Kệ Sách Mở</h2>
+                    <p class="product-desc">Kệ sách 5 tầng gỗ sồi tự nhiên, khung thép đen, thiết kế mở thoáng—điểm nhấn cho bất kỳ không gian nào.</p>
+                    <div class="product-footer">
+                        <div class="product-price">
+                            <span class="price-current">14.200.000 ₫</span>
+                        </div>
+                        <a href="index.html#contact" class="btn-order">Đặt hàng</a>
+                    </div>
+                </div>
+            </article>
+
+        </div><!-- /product-grid -->
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display:none;">
+            <div class="empty-icon">🪵</div>
+            <h3>Không tìm thấy sản phẩm</h3>
+            <p>Thử chọn danh mục khác hoặc <a href="index.html#contact">liên hệ với chúng tôi</a> để được tư vấn.</p>
+        </div>
+    </main>
+
+    <!-- CTA Banner -->
+    <section class="catalog-cta">
+        <div class="container catalog-cta-inner">
+            <div class="cta-text">
+                <h2>Không tìm thấy sản phẩm phù hợp?</h2>
+                <p>Chúng tôi nhận đặt hàng theo thiết kế riêng. Mang bản vẽ hoặc hình ảnh tham khảo đến showroom.</p>
+            </div>
+            <a href="index.html#contact" class="btn btn-primary">Yêu cầu thiết kế riêng</a>
+        </div>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
+        <div class="modal-panel">
+            <button class="modal-close" id="modal-close" aria-label="Đóng">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="modal-body">
+                <div class="modal-img-wrap">
+                    <img id="modal-img" src="" alt="" class="modal-img">
+                </div>
+                <div class="modal-info">
+                    <div class="product-meta">
+                        <span class="product-tag" id="modal-tag"></span>
+                        <span class="product-material" id="modal-material"></span>
+                    </div>
+                    <h2 class="modal-product-name" id="modal-product-name"></h2>
+                    <p class="modal-desc" id="modal-desc"></p>
+                    <div class="modal-specs" id="modal-specs">
+                        <div class="spec-item"><span class="spec-label">Chất liệu</span><span class="spec-value" id="spec-material"></span></div>
+                        <div class="spec-item"><span class="spec-label">Hoàn thiện</span><span class="spec-value">Sơn dầu tự nhiên</span></div>
+                        <div class="spec-item"><span class="spec-label">Bảo hành</span><span class="spec-value">3 năm</span></div>
+                        <div class="spec-item"><span class="spec-label">Giao hàng</span><span class="spec-value">15–30 ngày</span></div>
+                    </div>
+                    <div class="modal-price" id="modal-price"></div>
+                    <a href="index.html#contact" class="btn btn-primary" style="width:100%;margin-top:1.5rem;">Liên hệ đặt hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">PHÚ HÀ</div>
+            <div class="footer-links">
+                <a href="#">Điều khoản</a>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="catalog.html">Catalog</a>
+            </div>
+            <p class="copyright">&copy; 2026 Nội Thất Phú Hà. 970 Đê La Thành, Giảng Võ, Ba Đình, Hà Nội.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="catalog.js"></script>
+</body>
+</html>

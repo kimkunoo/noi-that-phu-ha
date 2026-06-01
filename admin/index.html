@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Nội Thất Phú Hà</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Đăng nhập -->
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h2>Đăng Nhập Quản Trị</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="admin-email" required>
+                </div>
+                <div class="input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="admin-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-login">Đăng nhập</button>
+            </form>
+            <p id="login-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-container" class="dashboard-container" style="display: none;">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>PHÚ HÀ <br><span>Admin</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="products-view">Sản phẩm</button>
+                <button class="nav-item" data-target="settings-view">Cài đặt chung</button>
+            </nav>
+            <button id="btn-logout" class="btn-logout">Đăng xuất</button>
+        </aside>
+
+        <main class="main-content">
+            <!-- Quản lý Sản Phẩm -->
+            <section id="products-view" class="view-section active">
+                <header class="section-header">
+                    <h1>Quản lý Sản Phẩm</h1>
+                    <button class="btn btn-primary" id="btn-add-product">Thêm sản phẩm mới</button>
+                </header>
+                
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Danh mục</th>
+                                <th>Giá</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <!-- Dữ liệu render từ JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Cài đặt -->
+            <section id="settings-view" class="view-section">
+                <header class="section-header">
+                    <h1>Cài đặt chung</h1>
+                </header>
+                <div class="form-panel">
+                    <p>Thiết lập thông tin hiển thị trên website.</p>
+                    <form id="settings-form">
+                        <div class="input-group">
+                            <label>Số điện thoại Hotline</label>
+                            <input type="text" id="site-hotline" placeholder="0981 213 161">
+                        </div>
+                        <div class="input-group">
+                            <label>Địa chỉ Showroom</label>
+                            <input type="text" id="site-address" placeholder="970 Đê La Thành, Giảng Võ, Ba Đình, Hà Nội">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Lưu cài đặt</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Thêm/Sửa Sản phẩm -->
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <h2 id="modal-title">Thêm sản phẩm mới</h2>
+                <button class="btn-close" id="btn-close-modal">&times;</button>
+            </div>
+            <form id="product-form">
+                <input type="hidden" id="prod-id">
+                <div class="input-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" id="prod-name" required>
+                </div>
+                <div class="input-group-row">
+                    <div class="input-group">
+                        <label>Danh mục</label>
+                        <select id="prod-category" required>
+                            <option value="phong-khach">Phòng khách</option>
+                            <option value="phong-ngu">Phòng ngủ</option>
+                            <option value="phong-an">Phòng ăn</option>
+                            <option value="luu-tru">Lưu trữ</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Giá (VND)</label>
+                        <input type="number" id="prod-price" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Chất liệu</label>
+                    <input type="text" id="prod-material" placeholder="VD: Gỗ Sồi, Gỗ Óc Chó..." required>
+                </div>
+                <div class="input-group">
+                    <label>Mô tả chi tiết</label>
+                    <textarea id="prod-desc" rows="4" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Hình ảnh (URL hiện tại hoặc up ảnh mới nếu có Firebase Storage)</label>
+                    <input type="text" id="prod-img" placeholder="images/product_sofa_set.png" required>
+                    <small>Trong bản demo, nhập đường dẫn file ảnh. Khi kết nối Firebase chuẩn, có thể upload ảnh thực tế.</small>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Lưu Sản Phẩm</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK dạng Module -->
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
